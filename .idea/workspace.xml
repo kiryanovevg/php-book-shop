@@ -1,7 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02d22ecf-5ff0-4c40-8003-ba7295489de8" name="Default Changelist" comment="" />
+    <list default="true" id="02d22ecf-5ff0-4c40-8003-ba7295489de8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/article_books.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/article_company.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/article_developer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/article_main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/css/nav.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/books_detective.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/books_poetry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/books_romance.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/company.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/developer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/detective/book_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/developer.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/magistr_logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/main_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/poetry/book_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/portfolio/orc-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/portfolio/orc-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/portfolio/orc-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/portfolio/orc-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/romance/book_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/images/roonyx_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/articles/article_company.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/articles/article_main.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +80,9 @@
   <component name="FavoritesManager">
     <favorites_list name="web-shop" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -24,13 +91,25 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2" />
   <component name="ProjectId" id="1RIQRPaIBdzlDuHtgdp5uZktOdJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/articles" />
+      <recent name="$PROJECT_DIR$/templates/html" />
+      <recent name="$PROJECT_DIR$/views" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -63,11 +142,30 @@
       <workItem from="1569353488132" duration="4000" />
       <workItem from="1569353518150" duration="3834000" />
       <workItem from="1569358622848" duration="306000" />
-      <workItem from="1569521998782" duration="2890000" />
+      <workItem from="1569521998782" duration="6763000" />
+      <workItem from="1569573370589" duration="755000" />
+      <workItem from="1569746188294" duration="411000" />
+      <workItem from="1570349011772" duration="2800000" />
+      <workItem from="1572287223516" duration="1214000" />
+      <workItem from="1574495893724" duration="4128000" />
+      <workItem from="1577102415363" duration="335000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

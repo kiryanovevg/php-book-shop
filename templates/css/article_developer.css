@@ -1,0 +1,80 @@
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    align-items: start;
+    margin-bottom: 35px;
+}
+
+.card > img {
+    object-fit: contain;
+    width: 300px;
+    height: auto;
+    border-radius: 150px;
+}
+
+.card-content {
+    height: 230px;
+    margin: 20px 20px 20px 35px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: gold;
+}
+
+.card-subtitle {
+    font-style: italic;
+}
+
+.card-text {
+    margin-top: 20px;
+}
+
+/**/
+.app-container {
+    width: 900px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: 1s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.app-item {
+    width: 200px;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.app-item > img {
+    max-width: 100%;
+}
+
+.app-item:hover {
+    cursor: pointer;
+    transform: translateZ(14px);
+}
+
+.portfolio {
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: gold;
+    margin-bottom: 35px;
+    margin-right: 120px;
+    text-align: right;
+}

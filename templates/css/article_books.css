@@ -1,0 +1,72 @@
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    display: flex;
+}
+
+.chip {
+    margin-right: 12px;
+    background-color: white;
+    padding: 8px 18px;
+    font-size: 16px;
+    border-radius: 64px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    color: black;
+    transition: background-color;
+    transition-duration: 0.3s;
+}
+
+a {
+    text-decoration: none;
+}
+
+.chip:hover {
+    background-color: #e0e0e0;
+}
+
+.chip-active {
+    background-color: gold;
+}
+
+.items {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    margin: 12px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.item > img {
+    max-width: 40vh;
+    object-fit: cover;
+    flex-grow: 1;
+    align-self: stretch;
+}
+
+.item-content {
+    padding: 12px;
+}
+
+.item-content > .name {
+    width: 35vh;
+}
+
+.item-content > .description {
+    font-style: italic;
+    color: #47474c;
+}
+
+.item-content > .price {
+    margin-top: 4px;
+    font-weight: bold;
+}

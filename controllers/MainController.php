@@ -5,12 +5,16 @@ class MainController
 {
 
     function actionMain() {
-        echo 'MAIN';
+        $this->showMainPage('article_main.php');
+        return true;
     }
 
-    function actionTest($word, $num) {
-        echo $word;
-        echo $num;
+    function actionCompany() {
+        $this->showMainPage('article_company.php');
         return true;
+    }
+
+    private function showMainPage($content) {
+        require_once ROOT . '/views/main.php';
     }
 }

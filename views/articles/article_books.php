@@ -1,8 +1,15 @@
 <article>
     <div class="category">
-        <a class="chip chip-active" href="books_detective.html">Детектив</a>
-        <a class="chip" href="books_romance.html">Романтика</a>
-        <a class="chip" href="books_poetry.html">Поэзия</a>
+<!--        <a class="chip chip-active" href="books_detective.html">Детектив</a>-->
+
+        <?php foreach ($params['categories'] as $item): ?>
+            <a
+                    class="chip"
+                    href="<?= '/books/' . $item['id'] ?>"
+            >
+                <?= $item['name'] ?>
+            </a>
+        <?php endforeach ?>
     </div>
 
     <div class="items">

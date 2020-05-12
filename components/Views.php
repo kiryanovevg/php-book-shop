@@ -65,9 +65,11 @@ class MainView extends View {
 
 class BookView extends View {
 
-    function __construct() {
+    function __construct($categories) {
         parent::__construct();
-        $this->content = GetIncludeContents(ArticlesDir() . "/article_books.php");
+        $this->content = GetIncludeContents(ArticlesDir() . "/article_books.php", [
+            'categories' => $categories
+        ]);
     }
 }
 

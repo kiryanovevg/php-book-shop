@@ -4,9 +4,9 @@ namespace Config;
 
 function DB() {
     return [
-        'host' => 'localhost',
-        'dbname' => 'floweret',
-        'username' => 'root',
-        'password' => '',
+        'host' => '127.0.0.1',
+        'dbname' => 'booksdb',
+        'username' => 'evgeniy',
+        'password' => 'evgeniy',
     ];
 }

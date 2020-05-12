@@ -1,6 +1,8 @@
 <?php
 namespace Views;
 
+use Router;
+
 function ViewDir() {
     return ROOT . '/views/';
 }
@@ -43,8 +45,8 @@ abstract class View {
 
     var string $title;
 
-    function __construct(int $selectedMenuItem) {
-        $navigationView = new NavigationView($selectedMenuItem);
+    function __construct() {
+        $navigationView = new NavigationView();
 
         $this->title = $navigationView->getSelectedItem()->getName();
         $this->navigation = $navigationView->getView();
@@ -56,15 +58,23 @@ abstract class View {
 class MainView extends View {
 
     function __construct() {
-        parent::__construct(0);
+        parent::__construct();
         $this->content = GetIncludeContents(ArticlesDir() . "/article_main.php");
+    }
+}
+
+class BookView extends View {
+
+    function __construct() {
+        parent::__construct();
+        $this->content = GetIncludeContents(ArticlesDir() . "/article_books.php");
     }
 }
 
 class CompanyView extends View {
 
     function __construct() {
-        parent::__construct(1);
+        parent::__construct();
         $this->content = GetIncludeContents(ArticlesDir() . "/article_company.php");
     }
 }
@@ -72,7 +82,7 @@ class CompanyView extends View {
 class DeveloperView extends View {
 
     function __construct() {
-        parent::__construct(2);
+        parent::__construct();
         $this->content = GetIncludeContents(ArticlesDir() . "/article_developer.php");
     }
 }
@@ -83,9 +93,9 @@ class NavigationView {
     private NavigationItem $selectedItem;
     private string $view;
 
-    public function __construct(int $num) {
+    public function __construct() {
         $this->items = $this->getNavigationItems();
-        $this->selectedItem = $this->items[$num];
+        $this->selectedItem = $this->findSelectedItem();
         $this->view = GetIncludeContents(ViewDir() . "/layouts/navigation.php", [
             'items' => $this->items,
             'selectedItem' => $this->selectedItem
@@ -95,9 +105,22 @@ class NavigationView {
     private function getNavigationItems() {
         return array(
             new NavigationItem("/", "Главная"),
+            new NavigationItem("/books", "Книги"),
             new NavigationItem("/company", "О компании"),
             new NavigationItem("/developer", "Об авторе")
         );
+    }
+
+    private function findSelectedItem() {
+        $uri = Router::getURI();
+
+        foreach ($this->items as $item) {
+            if ($item->getLink() == '/'.$uri) {
+                return $item;
+            }
+        }
+
+        return $this->items[0];
     }
 
     function getView() {

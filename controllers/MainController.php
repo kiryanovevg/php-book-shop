@@ -4,25 +4,20 @@ use Views\CompanyView;
 use Views\DeveloperView;
 use Views\MainView;
 
-class MainController
-{
+class MainController extends ViewController {
 
     function actionMain() {
-        $this->showMainPage(new MainView());
+        $this->showView(new MainView());
         return true;
     }
 
     function actionCompany() {
-        $this->showMainPage(new CompanyView());
+        $this->showView(new CompanyView());
         return true;
     }
 
     function actionDeveloper() {
-        $this->showMainPage(new DeveloperView());
+        $this->showView(new DeveloperView());
         return true;
-    }
-
-    private function showMainPage($view) {
-        require_once ROOT . '/views/layouts/main.php';
     }
 }

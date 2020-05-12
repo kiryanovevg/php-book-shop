@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../views/css/article_main.css">
     <link rel="stylesheet" href="../../views/css/article_company.css">
     <link rel="stylesheet" href="../../views/css/article_developer.css">
+    <link rel="stylesheet" href="../../views/css/article_books.css">
 </head>
 <body>
 

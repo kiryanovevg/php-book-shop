@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../templates/css/main.css">
-    <link rel="stylesheet" href="../../templates/css/nav.css">
-    <link rel="stylesheet" href="../../templates/css/header.css">
-    <link rel="stylesheet" href="../../templates/css/footer.css">
+    <link rel="stylesheet" href="../../views/css/main.css">
+    <link rel="stylesheet" href="../../views/css/nav.css">
+    <link rel="stylesheet" href="../../views/css/header.css">
+    <link rel="stylesheet" href="../../views/css/footer.css">
 
-    <link rel="stylesheet" href="../../templates/css/article_main.css">
+    <link rel="stylesheet" href="../../views/css/article_main.css">
 </head>
 <body>
 

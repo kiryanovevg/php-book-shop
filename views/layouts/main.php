@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title><?=$view->title?></title>
     <link rel="stylesheet" href="../../views/css/main.css">
     <link rel="stylesheet" href="../../views/css/nav.css">
     <link rel="stylesheet" href="../../views/css/header.css">
     <link rel="stylesheet" href="../../views/css/footer.css">
 
     <link rel="stylesheet" href="../../views/css/article_main.css">
+    <link rel="stylesheet" href="../../views/css/article_company.css">
+    <link rel="stylesheet" href="../../views/css/article_developer.css">
 </head>
 <body>
 

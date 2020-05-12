@@ -1,24 +1,28 @@
 <?php
 
-use Views\View;
+use Views\CompanyView;
+use Views\DeveloperView;
+use Views\MainView;
 
 class MainController
 {
 
     function actionMain() {
-        $this->showMainPage('article_main.php');
+        $this->showMainPage(new MainView());
         return true;
     }
 
     function actionCompany() {
-        $this->showMainPage('article_company.php');
+        $this->showMainPage(new CompanyView());
         return true;
     }
 
-    private function showMainPage($content) {
-        $view = new View();
-        $view->content = "<article>THIS IS CONTENT!</article>";
+    function actionDeveloper() {
+        $this->showMainPage(new DeveloperView());
+        return true;
+    }
 
+    private function showMainPage($view) {
         require_once ROOT . '/views/layouts/main.php';
     }
 }

@@ -1,6 +1,6 @@
 <article>
     <div class="row">
-        <img class="main-image elevation corners" src="../images/main_image.jpg" alt="Main image">
+        <img class="main-image elevation corners" src="../../images/main_image.jpg" alt="Main image">
         <div class="card-news elevation corners">
             <div class="card-news-title">Новости</div>
             <ul class="card-news-container">

@@ -1,3 +1,4 @@
 <header>
-    Главная
+<!--    Главная-->
+    <?=$params['title']?>
 </header>

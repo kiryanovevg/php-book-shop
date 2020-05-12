@@ -1,5 +1,6 @@
 <?php
 
+use Views\View;
 
 class MainController
 {
@@ -15,6 +16,9 @@ class MainController
     }
 
     private function showMainPage($content) {
-        require_once ROOT . '/views/main.php';
+        $view = new View();
+        $view->content = "<article>THIS IS CONTENT!</article>";
+
+        require_once ROOT . '/views/layouts/main.php';
     }
 }

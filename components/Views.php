@@ -1,8 +1,6 @@
 <?php
 namespace Views;
 
-use Router;
-
 function ViewDir() {
     return ROOT . '/views/';
 }
@@ -45,8 +43,8 @@ abstract class View {
 
     var string $title;
 
-    function __construct() {
-        $navigationView = new NavigationView();
+    function __construct(int $selectedItem) {
+        $navigationView = new NavigationView($selectedItem);
 
         $this->title = $navigationView->getSelectedItem()->getName();
         $this->navigation = $navigationView->getView();
@@ -58,17 +56,18 @@ abstract class View {
 class MainView extends View {
 
     function __construct() {
-        parent::__construct();
+        parent::__construct(0);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_main.php");
     }
 }
 
 class BookView extends View {
 
-    function __construct($categories) {
-        parent::__construct();
+    function __construct(array $categories, int $selectedCategoryId) {
+        parent::__construct(1);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_books.php", [
-            'categories' => $categories
+            'categories' => $categories,
+            '$selectedCategoryId' => $selectedCategoryId
         ]);
     }
 }
@@ -76,7 +75,7 @@ class BookView extends View {
 class CompanyView extends View {
 
     function __construct() {
-        parent::__construct();
+        parent::__construct(2);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_company.php");
     }
 }
@@ -84,7 +83,7 @@ class CompanyView extends View {
 class DeveloperView extends View {
 
     function __construct() {
-        parent::__construct();
+        parent::__construct(3);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_developer.php");
     }
 }
@@ -95,9 +94,10 @@ class NavigationView {
     private NavigationItem $selectedItem;
     private string $view;
 
-    public function __construct() {
+    public function __construct(int $selectedItem) {
         $this->items = $this->getNavigationItems();
-        $this->selectedItem = $this->findSelectedItem();
+        $this->selectedItem = $this->items[$selectedItem];
+
         $this->view = GetIncludeContents(ViewDir() . "/layouts/navigation.php", [
             'items' => $this->items,
             'selectedItem' => $this->selectedItem
@@ -113,7 +113,7 @@ class NavigationView {
         );
     }
 
-    private function findSelectedItem() {
+    /*private function findSelectedItem() {
         $uri = Router::getURI();
 
         foreach ($this->items as $item) {
@@ -123,7 +123,7 @@ class NavigationView {
         }
 
         return $this->items[0];
-    }
+    }*/
 
     function getView() {
         return $this->view;

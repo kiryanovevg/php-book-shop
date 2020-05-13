@@ -18,14 +18,21 @@ class Db {
         $db = pg_connect($connectionStr)
         or die('Не удалось соединиться: ' . pg_last_error());
 
-        // Устанавливаем соединение
-//        $dsn = "postgresql:host={$params['host']};dbname={$params['dbname']}";
-//        $db = new PDO($dsn, $params['user'], $params['password']);
-
-        // Задаем кодировку
-//        $db->exec("set names utf8");
-
         return $db;
     }
 
+    public static function querySelect(string $selectQuery) {
+        $conn = Db::getConnection();
+
+        $query = pg_query($selectQuery) or die('Ошибка запроса: ' . pg_last_error());
+
+        $result = array();
+        while ($data = pg_fetch_object($query)) {
+            array_push($result, $data);
+        }
+
+        pg_free_result($query);
+        pg_close($conn);
+        return $result;
+    }
 }

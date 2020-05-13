@@ -4,10 +4,10 @@
 
         <?php foreach ($params['categories'] as $item): ?>
             <a
-                    class="chip"
-                    href="<?= '/books/' . $item['id'] ?>"
+                    class="chip <?= $params['$selectedCategoryId'] == $item->id ? 'chip-active"' : '' ?>"
+                    href="<?= '/books/' . $item->id ?>"
             >
-                <?= $item['name'] ?>
+                <?= $item->name ?>
             </a>
         <?php endforeach ?>
     </div>

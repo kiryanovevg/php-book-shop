@@ -9,6 +9,10 @@ function ArticlesDir() {
     return ViewDir() . "/articles/";
 }
 
+function StylesDir() {
+    return "../../views/css";
+}
+
 function ImagesDir() {
 //    return ROOT . '/../frontend/web/images/';
 }
@@ -42,6 +46,7 @@ abstract class View {
     var string $footer;
 
     var string $title;
+    var string $style;
 
     function __construct(int $selectedItem) {
         $navigationView = new NavigationView($selectedItem);
@@ -50,7 +55,10 @@ abstract class View {
         $this->navigation = $navigationView->getView();
         $this->header = HeaderView($this->title);
         $this->footer = FooterView();
+        $this->style = $this->getStyle();
     }
+
+    abstract function getStyle(): string;
 }
 
 class MainView extends View {
@@ -58,6 +66,10 @@ class MainView extends View {
     function __construct() {
         parent::__construct(0);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_main.php");
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_main.css";
     }
 }
 
@@ -71,6 +83,24 @@ class BookListView extends View {
             'books' => $books
         ]);
     }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_books.css";
+    }
+}
+
+class BookView extends View {
+
+    function __construct($book) {
+        parent::__construct(1);
+        $this->content = GetIncludeContents(ArticlesDir() . "/article_book.php", [
+            'book' => $book
+        ]);
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_book.css";
+    }
 }
 
 class CompanyView extends View {
@@ -79,6 +109,10 @@ class CompanyView extends View {
         parent::__construct(2);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_company.php");
     }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_company.css";
+    }
 }
 
 class DeveloperView extends View {
@@ -86,6 +120,10 @@ class DeveloperView extends View {
     function __construct() {
         parent::__construct(3);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_developer.php");
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_developer.css";
     }
 }
 

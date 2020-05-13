@@ -14,14 +14,16 @@
 
     <div class="items">
         <?php foreach ($params['books'] as $item): ?>
-        <div class="item corners elevation">
+
+            <a class="item corners elevation" href="/book/<?= $item->id ?>">
             <img src="<?= $item->image ?>" alt="book image">
             <div class="item-content">
                 <div class="name"><?= $item->name ?></div>
                 <div class="description"><?= $item->author ?></div>
                 <div class="price"><?= $item->price ?></div>
             </div>
-        </div>
+            </a>
+
         <?php endforeach ?>
     </div>
 </article>

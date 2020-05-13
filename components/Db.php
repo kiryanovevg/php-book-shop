@@ -5,7 +5,7 @@ class Db {
     public static function getConnection() {
         // Получаем параметры подключения из файла
         $paramsPath = ROOT . '/config/config.php';
-        include($paramsPath);
+        include_once ($paramsPath);
         $params = Config\DB();
 
         $host = "host=" . $params['host'];

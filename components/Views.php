@@ -61,13 +61,14 @@ class MainView extends View {
     }
 }
 
-class BookView extends View {
+class BookListView extends View {
 
-    function __construct(array $categories, int $selectedCategoryId) {
+    function __construct(array $categories, int $selectedCategoryId, array $books) {
         parent::__construct(1);
         $this->content = GetIncludeContents(ArticlesDir() . "/article_books.php", [
             'categories' => $categories,
-            '$selectedCategoryId' => $selectedCategoryId
+            'selectedCategoryId' => $selectedCategoryId,
+            'books' => $books
         ]);
     }
 }

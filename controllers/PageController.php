@@ -19,17 +19,6 @@ class PageController extends ViewController {
     function actionEdit($page) {
         $this->checkAuthorization();
 
-        /*if (!empty($_POST['content'])) {
-            $page->name = htmlspecialchars($_POST['name']);
-            $page->content = $_POST['content'];
-            $query = "UPDATE _page SET name = \"{$page->name}\", content = \"{$page->content}\" WHERE id = {$page->id}";
-            $result = Utility\DBQuery($db, $query);
-            if ($result) {
-                header("Location: http://".$_SERVER['HTTP_HOST']."/");
-                exit();
-            }
-        }*/
-
         $result = Db::query("select * from page where name = '$page' limit 1");
         if (count($result) != 0) {
             $item = $result[0];
@@ -37,7 +26,7 @@ class PageController extends ViewController {
             if (!empty($_POST['content'])) {
                 $content = $_POST['content'];
                 Db::query("UPDATE page SET content = '$content' WHERE name = '$item->name';");
-                header("Location: /admin/edit" . ucfirst($item->name));
+                header("Location: /edit/" . $item->name);
                 return true;
             }
 
@@ -54,7 +43,7 @@ class PageController extends ViewController {
         $content = GetIncludeContents(ArticlesDir() . "/article_$page.php");
         if ($content) {
             Db::query("UPDATE page SET content = '$content' WHERE name = '$page'");
-            header("Location: /admin/edit" . ucfirst($page));
+            header("Location: /edit/" . $page);
         } else {
             header("Location: /admin");
         }

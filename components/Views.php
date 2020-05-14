@@ -61,7 +61,22 @@ abstract class View {
     abstract function getStyle(): ?string;
 }
 
-class MainView extends View {
+class PageView extends View {
+
+    private string $page;
+
+    function __construct($selectedItem, $page, $content) {
+        $this->page = $page;
+        parent::__construct($selectedItem);
+        $this->content = $content;
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_$this->page.css";
+    }
+}
+
+/*class MainView extends View {
 
     function __construct() {
         parent::__construct(0);
@@ -72,6 +87,31 @@ class MainView extends View {
         return StylesDir() . "/article_main.css";
     }
 }
+
+
+class CompanyView extends View {
+
+    function __construct() {
+        parent::__construct(2);
+        $this->content = GetIncludeContents(ArticlesDir() . "/article_company.php");
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_company.css";
+    }
+}
+
+class DeveloperView extends View {
+
+    function __construct() {
+        parent::__construct(3);
+        $this->content = GetIncludeContents(ArticlesDir() . "/article_developer.php");
+    }
+
+    function getStyle(): string {
+        return StylesDir() . "/article_developer.css";
+    }
+}*/
 
 class BookListView extends View {
 
@@ -100,30 +140,6 @@ class BookView extends View {
 
     function getStyle(): string {
         return StylesDir() . "/article_book.css";
-    }
-}
-
-class CompanyView extends View {
-
-    function __construct() {
-        parent::__construct(2);
-        $this->content = GetIncludeContents(ArticlesDir() . "/article_company.php");
-    }
-
-    function getStyle(): string {
-        return StylesDir() . "/article_company.css";
-    }
-}
-
-class DeveloperView extends View {
-
-    function __construct() {
-        parent::__construct(3);
-        $this->content = GetIncludeContents(ArticlesDir() . "/article_developer.php");
-    }
-
-    function getStyle(): string {
-        return StylesDir() . "/article_developer.css";
     }
 }
 
@@ -191,7 +207,7 @@ class NavigationView {
         ]);
     }
 
-    private static function getNavigationItems(bool $isAdmin, bool $isAuthorized) {
+    private static function getNavigationItems(bool $isAdmin, bool $isAuthorized = false) {
         if ($isAdmin) return self::getAdminNavigationItems($isAuthorized);
         else return array(
             new NavigationItem("/", "Главная"),
@@ -214,9 +230,7 @@ class NavigationView {
         );
     }
 
-    public static function getSelectedItemNumForAdmin(string $page): int {
-        $items = self::getAdminNavigationItems(true);
-
+    private static function findSelectedItemNum(array $items, string $page): int {
         for ($i = 0; $i < count($items); $i++) {
             $item = $items[$i];
 
@@ -226,6 +240,18 @@ class NavigationView {
         }
 
         return 0;
+    }
+
+    public static function getSelectedItemNumForAdmin(string $page): int {
+        return self::findSelectedItemNum(
+            self::getAdminNavigationItems(true), $page
+        );
+    }
+
+    public static function getSelectedItemNum(string $page): int {
+        return self::findSelectedItemNum(
+            self::getNavigationItems(false), $page
+        );
     }
 
     function getView() {

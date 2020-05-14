@@ -33,5 +33,7 @@ class BookListController extends ViewController {
 
             header("Location: /books/$id");
         } else die("Categories doesn't exists!");
+
+        return true;
     }
 }

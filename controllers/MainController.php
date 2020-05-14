@@ -1,23 +1,17 @@
 <?php
 
-use Views\CompanyView;
-use Views\DeveloperView;
-use Views\MainView;
+use Views\NavigationView;
+use Views\PageView;
 
 class MainController extends ViewController {
 
-    function actionMain() {
-        $this->showView(new MainView());
-        return true;
-    }
-
-    function actionCompany() {
-        $this->showView(new CompanyView());
-        return true;
-    }
-
-    function actionDeveloper() {
-        $this->showView(new DeveloperView());
+    function actionMain($page) {
+        $result = Db::query("select * from page where name = '$page' limit 1");
+        if (count($result) != 0) {
+            $item = $result[0];
+            $selectedItem = NavigationView::getSelectedItemNum($item->name);
+            $this->showView(new PageView($selectedItem, $item->name, $item->content));
+        } else header("Location: /");
         return true;
     }
 }

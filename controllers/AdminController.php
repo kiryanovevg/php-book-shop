@@ -6,12 +6,16 @@ use Views\AdminRegistrationView;
 
 class AdminController extends ViewController {
 
-    function actionSignIn() {
+    private function checkAuthorization() {
         session_start();
         if (User::isAuthorized()) {
             header("Location: /admin");
-            return true;
+            exit();
         }
+    }
+
+    function actionSignIn() {
+        $this->checkAuthorization();
 
         $error = null;
 
@@ -38,11 +42,7 @@ class AdminController extends ViewController {
     }
 
     function actionSignUp() {
-        session_start();
-        if (User::isAuthorized()) {
-            header("Location: /admin");
-            return true;
-        }
+        $this->checkAuthorization();
 
         if (!empty($_POST['login']) && !empty($_POST['password'])) {
             $login = $_POST['login'];
@@ -66,7 +66,7 @@ class AdminController extends ViewController {
     function actionMain() {
         session_start();
         if (!User::isAuthorized()) header("Location: /admin/signIn");
-        else header("Location: /admin/editMain");
+        else header("Location: /edit/main");
 
         return true;
     }

@@ -203,9 +203,9 @@ class NavigationView {
 
     private static function getAdminNavigationItems(bool $isAuthorized) {
         if ($isAuthorized) return array(
-            new NavigationItem("/admin/editMain", "Главная"),
-            new NavigationItem("/admin/editCompany", "О компании"),
-            new NavigationItem("/admin/editDeveloper", "Об авторе"),
+            new NavigationItem("/edit/main", "Главная"),
+            new NavigationItem("/edit/company", "О компании"),
+            new NavigationItem("/edit/developer", "Об авторе"),
             new NavigationItem("/admin/logOut", "Выйти"),
         );
         else return array(
@@ -214,7 +214,7 @@ class NavigationView {
         );
     }
 
-    /*public static function getSelectedItemNumForAdmin(string $page): int {
+    public static function getSelectedItemNumForAdmin(string $page): int {
         $items = self::getAdminNavigationItems(true);
 
         for ($i = 0; $i < count($items); $i++) {
@@ -225,20 +225,8 @@ class NavigationView {
             }
         }
 
-        return -1;
-    }*/
-
-    /*private function findSelectedItem() {
-        $uri = Router::getURI();
-
-        foreach ($this->items as $item) {
-            if ($item->getLink() == '/'.$uri) {
-                return $item;
-            }
-        }
-
-        return $this->items[0];
-    }*/
+        return 0;
+    }
 
     function getView() {
         return $this->view;

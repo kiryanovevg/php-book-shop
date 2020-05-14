@@ -2,63 +2,54 @@
 
 
 use Views\AdminPageView;
+use Views\NavigationView;
 use function Views\ArticlesDir;
 use function Views\GetIncludeContents;
 
 class PageController extends ViewController {
 
-    private function getPageContent(string $page): string {
+    private function checkAuthorization() {
+        session_start();
+        if (!User::isAuthorized()) {
+            header("Location: /admin");
+            exit();
+        }
+    }
+
+    function actionEdit($page) {
+        $this->checkAuthorization();
+
+        /*if (!empty($_POST['content'])) {
+            $page->name = htmlspecialchars($_POST['name']);
+            $page->content = $_POST['content'];
+            $query = "UPDATE _page SET name = \"{$page->name}\", content = \"{$page->content}\" WHERE id = {$page->id}";
+            $result = Utility\DBQuery($db, $query);
+            if ($result) {
+                header("Location: http://".$_SERVER['HTTP_HOST']."/");
+                exit();
+            }
+        }*/
+
         $result = Db::query("select * from page where name = '$page' limit 1");
         if (count($result) != 0) {
-            return $result[0]->content;
-        } else die("Page doesn't exist");
-    }
+            $item = $result[0];
 
-    function actionEditMain() {
-        session_start();
-        if (!User::isAuthorized()) {
-            header("Location: /admin");
-            return true;
-        }
+            if (!empty($_POST['content'])) {
+                $content = $_POST['content'];
+                Db::query("UPDATE page SET content = '$content' WHERE name = '$item->name';");
+                header("Location: /admin/edit" . ucfirst($item->name));
+                return true;
+            }
 
-        $page = "main";
-        $content = $this->getPageContent($page);
-        $this->showView(new AdminPageView(0, $page, $content));
-        return true;
-    }
+            $selectedItem = NavigationView::getSelectedItemNumForAdmin($item->name);
+            $this->showView(new AdminPageView($selectedItem, $item->name, $item->content));
+        } else header("Location: /admin");
 
-    function actionEditCompany() {
-        session_start();
-        if (!User::isAuthorized()) {
-            header("Location: /admin");
-            return true;
-        }
-
-        $page = "company";
-        $content = $this->getPageContent($page);
-        $this->showView(new AdminPageView(1, $page, $content));
-        return true;
-    }
-
-    function actionEditDeveloper() {
-        session_start();
-        if (!User::isAuthorized()) {
-            header("Location: /admin");
-            return true;
-        }
-
-        $page = "developer";
-        $content = $this->getPageContent($page);
-        $this->showView(new AdminPageView(2, $page, $content));
         return true;
     }
 
     function actionRestore($page) {
-        session_start();
-        if (!User::isAuthorized()) {
-            header("Location: /admin");
-            return true;
-        }
+        $this->checkAuthorization();
 
         $content = GetIncludeContents(ArticlesDir() . "/article_$page.php");
         if ($content) {

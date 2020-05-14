@@ -160,13 +160,13 @@ class AdminRegistrationView extends AdminView {
     }
 }
 
-class AdminMainView extends AdminView {
+class AdminPageView extends AdminView {
 
-    public function __construct() {
-        parent::__construct(0, true);
+    public function __construct($selectedItem, $page, $content) {
+        parent::__construct($selectedItem, true);
         $this->content = GetIncludeContents(AdminViewDir() . "/page.php", [
-            'name' => 'name',
-            'content' => 'content'
+            'page' => $page,
+            'content' => $content
         ]);
     }
 
@@ -191,8 +191,8 @@ class NavigationView {
         ]);
     }
 
-    private function getNavigationItems(bool $isAdmin, bool $isAuthorized) {
-        if ($isAdmin) return $this->getAdminNavigationItems($isAuthorized);
+    private static function getNavigationItems(bool $isAdmin, bool $isAuthorized) {
+        if ($isAdmin) return self::getAdminNavigationItems($isAuthorized);
         else return array(
             new NavigationItem("/", "Главная"),
             new NavigationItem("/books", "Книги"),
@@ -201,9 +201,11 @@ class NavigationView {
         );
     }
 
-    private function getAdminNavigationItems(bool $isAuthorized) {
+    private static function getAdminNavigationItems(bool $isAuthorized) {
         if ($isAuthorized) return array(
-            new NavigationItem("/admin/main", "Главная"),
+            new NavigationItem("/admin/editMain", "Главная"),
+            new NavigationItem("/admin/editCompany", "О компании"),
+            new NavigationItem("/admin/editDeveloper", "Об авторе"),
             new NavigationItem("/admin/logOut", "Выйти"),
         );
         else return array(
@@ -211,6 +213,20 @@ class NavigationView {
             new NavigationItem("/admin/signUp", "Регистрация"),
         );
     }
+
+    /*public static function getSelectedItemNumForAdmin(string $page): int {
+        $items = self::getAdminNavigationItems(true);
+
+        for ($i = 0; $i < count($items); $i++) {
+            $item = $items[$i];
+
+            if (strpos($item->getLink(), $page) !== false) {
+                return $i;
+            }
+        }
+
+        return -1;
+    }*/
 
     /*private function findSelectedItem() {
         $uri = Router::getURI();

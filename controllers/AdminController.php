@@ -2,13 +2,17 @@
 
 
 use Views\AdminLoginView;
-use Views\AdminMainView;
 use Views\AdminRegistrationView;
 
 class AdminController extends ViewController {
 
     function actionSignIn() {
         session_start();
+        if (User::isAuthorized()) {
+            header("Location: /admin");
+            return true;
+        }
+
         $error = null;
 
         if (!empty($_POST['login']) && !empty($_POST['password'])) {
@@ -22,8 +26,6 @@ class AdminController extends ViewController {
                 if (!password_verify($password, $user->password)) $error = "Wrong password";
                 else if ($user->confirmed == 0) $error = "User doesn't confirmed";
 
-                echo $user->confirmed;
-
                 if ($error == null) {
                     $_SESSION['userId'] = $user->id;
                     header("Location: /admin");
@@ -36,6 +38,12 @@ class AdminController extends ViewController {
     }
 
     function actionSignUp() {
+        session_start();
+        if (User::isAuthorized()) {
+            header("Location: /admin");
+            return true;
+        }
+
         if (!empty($_POST['login']) && !empty($_POST['password'])) {
             $login = $_POST['login'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -55,16 +63,11 @@ class AdminController extends ViewController {
         return true;
     }
 
-    function actionPage($page) {
-        $this->showView(new AdminMainView());
-        return true;
-    }
-
     function actionMain() {
         session_start();
         if (!User::isAuthorized()) header("Location: /admin/signIn");
+        else header("Location: /admin/editMain");
 
-        $this->actionPage("main");
         return true;
     }
 }

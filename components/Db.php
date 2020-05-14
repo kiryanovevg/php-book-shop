@@ -21,17 +21,17 @@ class Db {
         return $db;
     }
 
-    public static function querySelect(string $selectQuery) {
+    public static function query(string $query) {
         $conn = Db::getConnection();
 
-        $query = pg_query($selectQuery) or die('Ошибка запроса: ' . pg_last_error());
+        $queryResult = pg_query($query) or die('Ошибка запроса: ' . pg_last_error());
 
         $result = array();
-        while ($data = pg_fetch_object($query)) {
+        while ($data = pg_fetch_object($queryResult)) {
             array_push($result, $data);
         }
 
-        pg_free_result($query);
+        pg_free_result($queryResult);
         pg_close($conn);
         return $result;
     }

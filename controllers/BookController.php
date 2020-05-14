@@ -7,7 +7,7 @@ class BookController extends ViewController {
 
     private function getBook(int $bookId) {
         $query = "select * from book where id = $bookId";
-        $result = Db::querySelect($query);
+        $result = Db::query($query);
 
         if (count($result) != 0) {
             return $result[0];

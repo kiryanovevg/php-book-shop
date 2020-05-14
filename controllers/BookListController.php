@@ -8,13 +8,13 @@ class BookListController extends ViewController {
         $query = "select * from category order by \"order\"";
         if ($first) $query .= " limit 1";
 
-        return Db::querySelect($query);
+        return Db::query($query);
     }
 
     private function getBooks(int $category) {
         $query = "select * from book where category = $category";
 
-        return Db::querySelect($query);
+        return Db::query($query);
     }
 
     function actionCategory($category) {

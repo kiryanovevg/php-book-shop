@@ -18,7 +18,7 @@ function ImagesDir() {
 }
 
 function AdminViewDir() {
-//    return ROOT . '/../admin/views/';
+    return ViewDir() . "/admin/";
 }
 
 function GetIncludeContents($filename, $params = null) {
@@ -46,10 +46,10 @@ abstract class View {
     var string $footer;
 
     var string $title;
-    var string $style;
+    var ?string $style;
 
-    function __construct(int $selectedItem) {
-        $navigationView = new NavigationView($selectedItem);
+    function __construct(int $selectedItem, bool $isAdmin = false, bool $isAuthorized = false) {
+        $navigationView = new NavigationView($selectedItem, $isAdmin, $isAuthorized);
 
         $this->title = $navigationView->getSelectedItem()->getName();
         $this->navigation = $navigationView->getView();
@@ -58,7 +58,7 @@ abstract class View {
         $this->style = $this->getStyle();
     }
 
-    abstract function getStyle(): string;
+    abstract function getStyle(): ?string;
 }
 
 class MainView extends View {
@@ -127,14 +127,62 @@ class DeveloperView extends View {
     }
 }
 
+abstract class AdminView extends View {
+
+    public function __construct(int $selectedItem, bool $isAuthorized) {
+        parent::__construct($selectedItem, true, $isAuthorized);
+    }
+}
+
+class AdminLoginView extends AdminView {
+
+    public function __construct(?string $error) {
+        parent::__construct(0, false);
+        $this->content = GetIncludeContents(AdminViewDir() . "/login.php", [
+            'error' => $error
+        ]);
+    }
+
+    function getStyle(): ?string {
+        return StylesDir() . "/login.css";
+    }
+}
+
+class AdminRegistrationView extends AdminView {
+
+    public function __construct() {
+        parent::__construct(1, false);
+        $this->content = GetIncludeContents(AdminViewDir() . "/sign_up.php");
+    }
+
+    function getStyle(): ?string {
+        return null;
+    }
+}
+
+class AdminMainView extends AdminView {
+
+    public function __construct() {
+        parent::__construct(0, true);
+        $this->content = GetIncludeContents(AdminViewDir() . "/page.php", [
+            'name' => 'name',
+            'content' => 'content'
+        ]);
+    }
+
+    function getStyle(): ?string {
+        return null;
+    }
+}
+
 class NavigationView {
 
     private array $items;
     private NavigationItem $selectedItem;
     private string $view;
 
-    public function __construct(int $selectedItem) {
-        $this->items = $this->getNavigationItems();
+    public function __construct(int $selectedItem, bool $isAdmin, bool $isAuthorized) {
+        $this->items = $this->getNavigationItems($isAdmin, $isAuthorized);
         $this->selectedItem = $this->items[$selectedItem];
 
         $this->view = GetIncludeContents(ViewDir() . "/layouts/navigation.php", [
@@ -143,12 +191,24 @@ class NavigationView {
         ]);
     }
 
-    private function getNavigationItems() {
-        return array(
+    private function getNavigationItems(bool $isAdmin, bool $isAuthorized) {
+        if ($isAdmin) return $this->getAdminNavigationItems($isAuthorized);
+        else return array(
             new NavigationItem("/", "Главная"),
             new NavigationItem("/books", "Книги"),
             new NavigationItem("/company", "О компании"),
             new NavigationItem("/developer", "Об авторе")
+        );
+    }
+
+    private function getAdminNavigationItems(bool $isAuthorized) {
+        if ($isAuthorized) return array(
+            new NavigationItem("/admin/main", "Главная"),
+            new NavigationItem("/admin/logOut", "Выйти"),
+        );
+        else return array(
+            new NavigationItem("/admin/signIn", "Войти"),
+            new NavigationItem("/admin/signUp", "Регистрация"),
         );
     }
 

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../../views/css/header.css">
     <link rel="stylesheet" href="../../views/css/footer.css">
 
-    <link rel="stylesheet" href="<?= $view->style ?>">
+    <?php if ($view->style): ?>
+        <link rel="stylesheet" href="<?= $view->style ?>">
+    <?php endif ?>
 </head>
 <body>
 

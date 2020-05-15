@@ -6,15 +6,15 @@ function ViewDir() {
 }
 
 function ArticlesDir() {
-    return ViewDir() . "/articles/";
+    return ViewDir() . "/articles";
 }
 
 function StylesDir() {
-    return "../../views/css";
+    return "/views/css";
 }
 
 function ImagesDir() {
-//    return ROOT . '/../frontend/web/images/';
+    return "/images/uploaded/";
 }
 
 function AdminViewDir() {

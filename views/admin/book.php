@@ -1,3 +1,8 @@
+<?php
+
+use function Views\ImagesDir;
+
+?>
 <article>
     <form method="POST" enctype="multipart/form-data">
         <?php if($params['error']):?>
@@ -11,15 +16,21 @@
             </tr>
             <tr>
                 <td><label>Цена: <input type="number" name="price" value="<?= $params['book']->price ?>"></label></td>
-                <td><label>Картинка: <input name="image" type="file"></label></td>
+                <td><label>Изображение: <input name="image" type="file"></label></td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    <label>Описание:<br>
+                    <label>Описание:<br><br>
                         <textarea rows="15" cols="50" name="description"><?= $params['book']->description ?></textarea>
                     </label>
                 </td>
+                <th>
+                    Текущее изображение:<br><br>
+                    <?php if($params['book']->image):?>
+                        <img src="<?= ImagesDir() . $params['book']->image ?>" alt="book image">
+                    <?php endif?>
+                </th>
             </tr>
         </table>
         <input type="submit" value="Сохранить">

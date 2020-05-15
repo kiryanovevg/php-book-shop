@@ -1,8 +1,13 @@
+<?php
+
+use function Views\ImagesDir;
+
+?>
 <article>
 
     <div class="item corners elevation">
         <?php if ($params['book']->image): ?>
-            <img src="<?= $params['book']->image ?>" alt="book image">
+            <img src="<?= ImagesDir() . $params['book']->image ?>" alt="book image">
         <?php endif ?>
         <div class="item-content">
             <div class="name"><?= $params['book']->name ?></div>

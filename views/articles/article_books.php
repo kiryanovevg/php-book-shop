@@ -1,3 +1,8 @@
+<?php
+
+use function Views\ImagesDir;
+
+?>
 <article>
 
     <?= count($params['categories']) == 0 ? 'Кинг пока нет...' : '' ?>
@@ -19,7 +24,7 @@
             <a class="item corners elevation" href="/book/<?= $item->id ?>">
 
                 <?php if ($item->image): ?>
-                    <img src="<?= $item->image ?>" alt="book image">
+                    <img src="<?= ImagesDir() . $item->image ?>" alt="book image">
                 <?php endif ?>
 
                 <div class="item-content">

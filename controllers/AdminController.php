@@ -1,6 +1,5 @@
 <?php
 
-
 use Views\AdminLoginView;
 use Views\AdminRegistrationView;
 

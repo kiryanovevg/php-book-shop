@@ -1,0 +1,8 @@
+th, td {
+    padding: 10px;
+}
+
+.error {
+    color: #740006;
+    font-weight: bold;
+}

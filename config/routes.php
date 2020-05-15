@@ -1,6 +1,8 @@
 <?php
 return array(
     'restore/([a-z]+)' => 'page/restore/$1',
+    'edit/books/add' => 'adminBook/add',
+    'edit/books' => 'adminBook/main',
     'edit/([a-z]+)' => 'page/edit/$1',
     'admin/signIn' => 'admin/signIn',
     'admin/signUp' => 'admin/signUp',

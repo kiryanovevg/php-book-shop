@@ -191,6 +191,35 @@ class AdminPageView extends AdminView {
     }
 }
 
+class AdminBooksView extends AdminView {
+
+    public function __construct(array $books) {
+        parent::__construct(1, true);
+        $this->content = GetIncludeContents(AdminViewDir() . "/books.php", [
+            'books' => $books
+        ]);
+    }
+
+    function getStyle(): ?string {
+        return StylesDir() . "/admin_books.css";
+    }
+}
+
+class AdminBookEditView extends AdminView {
+
+    public function __construct($book, ?string $error = null) {
+        parent::__construct(1, true);
+        $this->content = GetIncludeContents(AdminViewDir() . "/book.php", [
+            'error' => $error,
+            'book' => $book
+        ]);
+    }
+
+    function getStyle(): ?string {
+        return StylesDir() . "/admin_book.css";
+    }
+}
+
 class NavigationView {
 
     private array $items;
@@ -220,6 +249,7 @@ class NavigationView {
     private static function getAdminNavigationItems(bool $isAuthorized) {
         if ($isAuthorized) return array(
             new NavigationItem("/edit/main", "Главная"),
+            new NavigationItem("/edit/books", "Книги"),
             new NavigationItem("/edit/company", "О компании"),
             new NavigationItem("/edit/developer", "Об авторе"),
             new NavigationItem("/admin/logOut", "Выйти"),

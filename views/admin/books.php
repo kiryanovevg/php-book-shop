@@ -15,8 +15,8 @@
                 <td><?= $item->author ?></td>
                 <td><?= $item->price ?></td>
                 <td>
-                    <a href='?controller=product&action=update&id=<?/*= $product['id'] */?>'>Изменить</a><br>
-                    <a href='?controller=product&action=delete&id=<?/*= $product['id'] */?>'>Удалить</a>
+<!--                    <a href='?controller=product&action=update&id=--><?///*= $product['id'] */?><!--'>Изменить</a><br>-->
+                    <a href='/edit/books/delete/<?= $item->id ?>'>Удалить</a>
                 </td>
             </tr>
         <?php endforeach ?>

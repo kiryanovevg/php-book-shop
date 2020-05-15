@@ -21,6 +21,8 @@ class BookListController extends ViewController {
         $categories = $this->getCategories();
         $books = $this->getBooks($category);
 
+        if (count($books) == 0) header("Location: /books");
+
         $this->showView(new BookListView($categories, $category, $books));
         return true;
     }
@@ -32,7 +34,8 @@ class BookListController extends ViewController {
             $id = $category->id;
 
             header("Location: /books/$id");
-        } else die("Categories doesn't exists!");
+//        } else die("Categories doesn't exists!");
+        } else $this->showView(new BookListView([], 0, []));
 
         return true;
     }

@@ -50,7 +50,9 @@ class AdminBookController extends ViewController {
     }
 
     function actionDelete($bookId) {
-
+        Db::query("delete from book where id = $bookId");
+        header("Location: /edit/books");
+        return true;
     }
 
     function actionAdd() {
@@ -74,7 +76,7 @@ class AdminBookController extends ViewController {
                 $this->addCategory($book->category);
                 $categoryId = $this->getCategoryIdByName($book->category);
                 $this->addBook($categoryId, $book);
-                header("Location:/edit/books");
+                header("Location: /edit/books");
                 return true;
             }
         }

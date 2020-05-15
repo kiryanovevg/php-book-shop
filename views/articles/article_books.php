@@ -1,6 +1,8 @@
 <article>
-    <div class="category">
 
+    <?= count($params['categories']) == 0 ? 'Кинг пока нет...' : '' ?>
+
+    <div class="category">
         <?php foreach ($params['categories'] as $item): ?>
             <a
                     class="chip <?= $params['selectedCategoryId'] == $item->id ? 'chip-active"' : '' ?>"

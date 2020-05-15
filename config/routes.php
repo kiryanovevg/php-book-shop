@@ -2,6 +2,7 @@
 return array(
     'restore/([a-z]+)' => 'page/restore/$1',
     'edit/books/add' => 'adminBook/add',
+    'edit/books/delete/([0-9]+)' => 'adminBook/delete/$1',
     'edit/books' => 'adminBook/main',
     'edit/([a-z]+)' => 'page/edit/$1',
     'admin/signIn' => 'admin/signIn',

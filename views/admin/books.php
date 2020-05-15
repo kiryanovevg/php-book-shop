@@ -6,7 +6,7 @@
             <th>Название</th>
             <th>Author</th>
             <th>Цена</th>
-            <th><a href='/edit/books/add'>Добавить</a><br></th>
+            <th><a href='/edit/book/add'>Добавить</a><br></th>
         </tr>
         <?php foreach ($params['books'] as $item): ?>
             <tr>
@@ -16,7 +16,7 @@
                 <td><?= $item->price ?></td>
                 <td>
                     <a href='/edit/book/<?= $item->id ?>'>Изменить</a><br>
-                    <a href='/edit/books/delete/<?= $item->id ?>'>Удалить</a>
+                    <a href='/edit/book/delete/<?= $item->id ?>'>Удалить</a>
                 </td>
             </tr>
         <?php endforeach ?>

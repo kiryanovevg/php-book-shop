@@ -75,7 +75,7 @@ class AdminBookController extends ViewController {
         return true;
     }
 
-    function actionAdd($bookId) {
+    function actionEdit($bookId) {
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

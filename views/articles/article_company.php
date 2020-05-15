@@ -1,6 +1,6 @@
 <article>
     <div class="about">
-        <img src="../images/magistr_logo.jpg" alt="magistr logo">
+        <img src="/images/magistr_logo.jpg" alt="magistr logo">
         <div>
             <p>
                 Сеть книжных магазинов «Магистр» существует с 2000 года и является одной из крупнейших в
@@ -37,7 +37,7 @@
                 <li>ул. Б.Садовая, 51</li>
                 <li>ул. Чехова, 31</li>
             </ul>
-            <img src="../images/map.png" alt="map">
+            <img src="/images/map.png" alt="map">
         </div>
     </div>
 </article>

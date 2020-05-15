@@ -45,6 +45,26 @@ class AdminBookController extends ViewController {
         );
     }
 
+    private function updateBook(int $bookId, int $categoryId, $book) {
+        Db::query("UPDATE book SET "
+            ."category=$categoryId, name='$book->name', author='$book->author', "
+            ."price=$book->price, image='$book->image', description='$book->description' WHERE id = $bookId;");
+    }
+
+    private function getBook(int $bookId) {
+        $query = "select b.*, b.price::money::numeric as price_num, c.name as category_name "
+            ."from book b join category c on b.category = c.id where b.id = $bookId";
+        $result = Db::query($query);
+
+        if (count($result) != 0) {
+            $item = $result[0];
+            return $this->getBookInstance(
+                $item->name, $item->category_name, $item->author,
+                $item->price_num, $item->description, $item->image
+            );
+        } else return false;
+    }
+
     private function addCategory(string $name) {
         Db::query("insert into category(name, \"order\") values ('$name', 0)");
     }
@@ -55,7 +75,7 @@ class AdminBookController extends ViewController {
         return true;
     }
 
-    function actionAdd() {
+    function actionAdd($bookId) {
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,18 +90,28 @@ class AdminBookController extends ViewController {
             if (empty($book->author)) $this->showError($book,"Автор не может быть пустым");
             if (empty($book->price)) $this->showError($book,"Цена не может быть пустой");
 
-            if ($categoryId = $this->getCategoryIdByName($book->name)) {
-                $this->addBook($categoryId, $book);
-            } else {
+            $categoryId = null;
+            if (!($categoryId = $this->getCategoryIdByName($book->category))){
                 $this->addCategory($book->category);
                 $categoryId = $this->getCategoryIdByName($book->category);
-                $this->addBook($categoryId, $book);
-                header("Location: /edit/books");
-                return true;
             }
+
+            if ($bookId != -1) {
+                $this->updateBook($bookId, $categoryId, $book);
+            } else {
+                $this->addBook($categoryId, $book);
+            }
+
+            header("Location: /edit/books");
         }
 
-        $this->showView(new AdminBookEditView($this->getBookInstance()));
+        $book = null;
+        if ($bookId != -1) {
+            if ($item = $this->getBook($bookId)) $book = $this->getBook($bookId);
+            else header("Location: /edit/books");
+        } else $book = $this->getBookInstance();
+
+        $this->showView(new AdminBookEditView($book));
         return true;
     }
 

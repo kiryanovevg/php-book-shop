@@ -1,7 +1,8 @@
 <?php
 return array(
     'restore/([a-z]+)' => 'page/restore/$1',
-    'edit/books/add' => 'adminBook/add',
+    'edit/book/([0-9]+)' => 'adminBook/add/$1',
+    'edit/books/add' => 'adminBook/add/-1',
     'edit/books/delete/([0-9]+)' => 'adminBook/delete/$1',
     'edit/books' => 'adminBook/main',
     'edit/([a-z]+)' => 'page/edit/$1',

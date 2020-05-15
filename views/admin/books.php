@@ -15,7 +15,7 @@
                 <td><?= $item->author ?></td>
                 <td><?= $item->price ?></td>
                 <td>
-<!--                    <a href='?controller=product&action=update&id=--><?///*= $product['id'] */?><!--'>Изменить</a><br>-->
+                    <a href='/edit/book/<?= $item->id ?>'>Изменить</a><br>
                     <a href='/edit/books/delete/<?= $item->id ?>'>Удалить</a>
                 </td>
             </tr>

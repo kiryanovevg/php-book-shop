@@ -26,8 +26,10 @@ use function Views\ImagesDir;
                     </label>
                 </td>
                 <th>
-                    Текущее изображение:<br><br>
-                    <?php if($params['book']->image):?>
+                    <?php if ($params['book']->id != -1 && $params['book']->image != null):?>
+                        Текущее изображение:
+                        <a href="/edit/book/<?= $params['book']->id ?>/deleteImage">Удалить</a>
+                        <br><br>
                         <img src="<?= ImagesDir() . $params['book']->image ?>" alt="book image">
                     <?php endif?>
                 </th>

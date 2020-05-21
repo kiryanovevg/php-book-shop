@@ -17,6 +17,10 @@ function ImagesDir() {
     return "/images/uploaded/";
 }
 
+function UploadedImagesDir() {
+    return ROOT . ImagesDir();
+}
+
 function AdminViewDir() {
     return ViewDir() . "/admin/";
 }

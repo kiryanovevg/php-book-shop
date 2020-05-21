@@ -47,6 +47,8 @@ class AdminController extends ViewController {
             $login = $_POST['login'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+            //TODO Проверка логина
+
             Db::query("INSERT INTO user_table(login, password) VALUES ($login, '$password')");
             header("Location: /admin/signIn");
         }

@@ -1,6 +1,7 @@
 <?php
 return array(
     'restore/([a-z]+)' => 'page/restore/$1',
+    'edit/book/([0-9]+)/deleteImage' => 'adminBook/deleteImage/$1',
     'edit/book/([0-9]+)' => 'adminBook/edit/$1',
     'edit/book/add' => 'adminBook/edit/-1',
     'edit/book/delete/([0-9]+)' => 'adminBook/delete/$1',
